@@ -1,0 +1,10 @@
+@import "../fonts/dot-gothic/_dot-gothic.font.scss";
+
+@mixin reset {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "DotGothic16", sans-serif;
+  }
+}
