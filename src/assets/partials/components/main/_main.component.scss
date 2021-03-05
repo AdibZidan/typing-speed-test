@@ -11,7 +11,10 @@
       flex-direction: column;
       height: 100vh;
 
-      app-header {
+      app-home-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         flex: 1 0 auto;
       }
 

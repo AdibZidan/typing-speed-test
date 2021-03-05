@@ -1,0 +1,15 @@
+<section>
+  <ng-container *ngIf="totalWords > 0">
+    <span>
+      Total Words: {{ totalWords }}
+    </span>
+  </ng-container>
+
+  <ng-container *ngIf="totalErrors > 0">
+    Total Errors: {{ totalErrors }}
+  </ng-container>
+
+  <span>
+    Difficulty: {{ difficulty }}
+  </span>
+</section>

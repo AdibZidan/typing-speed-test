@@ -1,7 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideMockStore } from '@ngrx/store/testing';
 import { AppComponent } from './app.component';
+import { DifficultySelectorComponent } from './components/difficulty-selector/difficulty-selector.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { FormComponent } from './shared/components/form/form.component';
+import { InformationComponent } from './shared/components/information/information.component';
+import { TextAreaComponent } from './shared/components/inputs/text-area/text-area.component';
 
 describe('AppComponent', () => {
 
@@ -12,9 +19,17 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        DifficultySelectorComponent,
         FooterComponent,
-        HeaderComponent
-      ]
+        HeaderComponent,
+        HomePageComponent,
+        FormComponent,
+        InformationComponent,
+        TextAreaComponent,
+
+      ],
+      providers: [provideMockStore()],
+      imports: [ReactiveFormsModule],
     }).compileComponents();
   }));
 

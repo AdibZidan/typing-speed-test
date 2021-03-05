@@ -1,0 +1,17 @@
+<ng-container *ngIf="(view$ | async)?.isShown">
+  <section>
+    <p>
+      Select a Difficulty:
+    </p>
+
+    <ng-container *ngFor="let difficulty of difficulties">
+      <div>
+        <button>
+          <strong>
+            {{ difficulty }}
+          </strong>
+        </button>
+      </div>
+    </ng-container>
+  </section>
+</ng-container>
