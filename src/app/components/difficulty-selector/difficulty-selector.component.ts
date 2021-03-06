@@ -5,8 +5,8 @@ import { ViewType } from '@shared/enums/view-type/view-type.enum';
 import { DifficultyHelper } from '@shared/helpers/difficulty/difficulty.helper';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
 import { View } from '@shared/interfaces/view/view.interface';
-import { setDifficulty } from '@shared/store/actions/difficulty/difficulty.actions';
 import { hideView, showView } from '@shared/store/actions/view/view.actions';
+import { setDifficulty } from '@shared/store/actions/words/words.actions';
 import { selectView } from '@shared/store/selectors/view/view.selector';
 import { Observable } from 'rxjs';
 

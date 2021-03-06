@@ -16,6 +16,11 @@
         justify-content: center;
         align-items: center;
         flex: 1 0 auto;
+
+        app-form {
+          display: flex;
+          justify-content: center;
+        }
       }
 
       app-footer {

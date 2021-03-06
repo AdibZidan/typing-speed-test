@@ -7,8 +7,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SharedModule } from './shared/shared.module';
-import { difficultyReducer } from './shared/store/reducers/difficulty/difficulty.reducer';
 import { viewReducer } from './shared/store/reducers/view/view.reducer';
+import { wordsReducer } from './shared/store/reducers/words/words.reducer';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import { viewReducer } from './shared/store/reducers/view/view.reducer';
     BrowserModule,
     SharedModule,
     StoreModule.forRoot({
-      difficulty: difficultyReducer,
-      views: viewReducer
+      views: viewReducer,
+      words: wordsReducer
     })
   ],
   bootstrap: [AppComponent]

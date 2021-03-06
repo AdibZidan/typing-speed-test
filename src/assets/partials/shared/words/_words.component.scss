@@ -1,0 +1,11 @@
+@mixin words-component {
+  section {
+    border: 1px solid #ccc;
+
+    p {
+      text-align: center;
+      padding: 25px;
+      font-size: 2rem;
+    }
+  }
+}

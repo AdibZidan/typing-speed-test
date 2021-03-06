@@ -1,7 +1,7 @@
-import { Difficulty } from '@shared/enums/difficulty/difficulty.enum';
 import { Views } from '../views/views.interface';
+import { Words } from '../words/words.interface';
 
 export interface AppState {
-  difficulty: Difficulty,
+  words: Words,
   views: Views;
 }

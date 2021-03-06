@@ -6,12 +6,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './components/form/form.component';
 import { InformationComponent } from './components/information/information.component';
 import { TextAreaComponent } from './components/inputs/text-area/text-area.component';
+import { WordsComponent } from './components/words/words.component';
 
 @NgModule({
   declarations: [
     FormComponent,
     InformationComponent,
-    TextAreaComponent
+    TextAreaComponent,
+    WordsComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { TextAreaComponent } from './components/inputs/text-area/text-area.compo
   exports: [
     CommonModule,
     FormComponent,
-    TextAreaComponent
+    TextAreaComponent,
+    WordsComponent
   ]
 })
 export class SharedModule { }

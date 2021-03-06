@@ -1,0 +1,9 @@
+<ng-container *ngIf="(view$ | async)?.isShown">
+  <section>
+    <p>
+      <ng-container *ngFor="let word of (words$ | async)?.words">
+        {{ word }}
+      </ng-container>
+    </p>
+  </section>
+</ng-container>

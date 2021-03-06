@@ -1,17 +1,25 @@
-<section>
-  <ng-container *ngIf="totalWords > 0">
+<ng-container *ngIf="words$ | async as state">
+  <section>
     <span>
-      Total Words: {{ totalWords }}
+      <strong>
+        Difficulty: {{ state.difficulty }}
+      </strong>
     </span>
-  </ng-container>
 
-  <ng-container *ngIf="totalErrors > 0">
-    Total Errors: {{ totalErrors }}
-  </ng-container>
+    <ng-container *ngIf="state.words.length > 0">
+      <span>
+        <strong>
+          Total Words: {{ state.words.length }}
+        </strong>
+      </span>
+    </ng-container>
 
-  <ng-container *ngIf="difficulty$ | async as difficulty">
-    <span>
-      Difficulty: {{ difficulty }}
-    </span>
-  </ng-container>
-</section>
+    <ng-container *ngIf="state.totalErrors > 0">
+      <span>
+        <strong>
+          Total Errors: {{ state.totalErrors }}
+        </strong>
+      </span>
+    </ng-container>
+  </section>
+</ng-container>
