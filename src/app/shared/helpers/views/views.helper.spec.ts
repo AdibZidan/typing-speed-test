@@ -12,6 +12,9 @@ describe('ViewsHelper', () => {
       },
       form: {
         isShown: false
+      },
+      footer: {
+        isShown: false
       }
     };
 

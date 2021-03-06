@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 import { InformationComponent } from './information.component';
 
 describe('InformationComponent', () => {
@@ -8,7 +9,8 @@ describe('InformationComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [InformationComponent]
+      declarations: [InformationComponent],
+      providers: [provideMockStore()]
     }).compileComponents();
   }));
 

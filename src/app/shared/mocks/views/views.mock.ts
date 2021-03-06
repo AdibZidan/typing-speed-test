@@ -6,5 +6,8 @@ export const viewsMock: Views = {
   },
   form: {
     isShown: false
+  },
+  footer: {
+    isShown: false
   }
 };

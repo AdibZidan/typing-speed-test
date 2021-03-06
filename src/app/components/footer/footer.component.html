@@ -1,13 +1,15 @@
-<footer>
-  <a
-    href="https://github.com/AdibZidan"
-    rel="nofollow noopener noreferrer"
-    title="GitHub"
-    target="_blank">
-    GitHub
-  </a>
+<ng-container *ngIf="(view$ | async)?.isShown">
+  <footer>
+    <a
+      href="https://github.com/AdibZidan"
+      rel="nofollow noopener noreferrer"
+      title="GitHub"
+      target="_blank">
+      GitHub
+    </a>
 
-  <span [title]="currentYear">
-    {{ currentYear }}
-  </span>
-</footer>
+    <span [title]="currentYear">
+      {{ currentYear }}
+    </span>
+  </footer>
+</ng-container>

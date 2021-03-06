@@ -9,7 +9,9 @@
     Total Errors: {{ totalErrors }}
   </ng-container>
 
-  <span>
-    Difficulty: {{ difficulty }}
-  </span>
+  <ng-container *ngIf="difficulty$ | async as difficulty">
+    <span>
+      Difficulty: {{ difficulty }}
+    </span>
+  </ng-container>
 </section>

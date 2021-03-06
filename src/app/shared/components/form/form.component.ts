@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.store$.select(selectView(ViewType.FORM));
+    this.view$ = this.store$.select(selectView(ViewType.FORM));
     this.initializeForm();
   }
 

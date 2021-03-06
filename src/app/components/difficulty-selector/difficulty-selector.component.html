@@ -6,7 +6,7 @@
 
     <ng-container *ngFor="let difficulty of difficulties">
       <div>
-        <button>
+        <button (click)="selectDifficulty(difficulty)">
           <strong>
             {{ difficulty }}
           </strong>

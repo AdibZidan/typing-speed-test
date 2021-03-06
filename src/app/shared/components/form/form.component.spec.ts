@@ -32,15 +32,22 @@ describe('FormComponent', () => {
   });
 
   describe('Before initialization', () => {
+    it('Should have an undefined view$ property', () => {
+      expect(component.view$).toBeUndefined();
+    });
+
     it('Should have an undefined formGroup property', () => {
       expect(component.formGroup).toBeUndefined();
     });
   });
 
   describe('After initialization', () => {
-
     beforeEach(() => {
       component.ngOnInit();
+    });
+
+    it('Should have a defined view$ property', () => {
+      expect(component.view$).toBeDefined();
     });
 
     it('Should have a defined formGroup property', () => {
