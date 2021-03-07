@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Difficulty } from '@shared/enums/difficulty/difficulty.enum';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
-import { Words } from '@shared/interfaces/words/words.interface';
+import { selectDifficulty, selectWordsLength } from '@shared/store/selectors/words/words.selector';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,16 +12,18 @@ import { Observable } from 'rxjs';
 })
 export class InformationComponent implements OnInit {
 
-  public totalWords: number = 0;
-  public totalErrors: number = 0;
-  public words$!: Observable<Words>;
+  public difficulty$!: Observable<Difficulty>;
+  public totalErrors$!: Observable<number>;
+  public totalWords$!: Observable<number>;
 
   constructor(
     private store$: Store<AppState>
   ) { }
 
   public ngOnInit(): void {
-    this.words$ = this.store$.select('words');
+    this.difficulty$ = this.store$.select(selectDifficulty);
+    this.totalErrors$ = this.store$.select('totalErrors');
+    this.totalWords$ = this.store$.select(selectWordsLength);
   }
 
 }

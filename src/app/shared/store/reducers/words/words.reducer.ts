@@ -5,35 +5,31 @@ import { Words } from '@shared/interfaces/words/words.interface';
 import { setDifficulty } from '@shared/store/actions/words/words.actions';
 
 const initialWordsState: Words = {
-  words: [],
-  difficulty: Difficulty.EASY,
-  totalErrors: 0
+  words: '',
+  difficulty: Difficulty.EASY
 };
 
-const _wordsreducer = createReducer(
+const _wordsReducer = createReducer(
   initialWordsState,
   on(
-    setDifficulty, ({ totalErrors }, { difficulty }): Words => {
+    setDifficulty, (state, { difficulty }): Words => {
       switch (difficulty) {
         case Difficulty.EASY:
           return {
             words: WordsHelper.getEasyWords(),
-            difficulty,
-            totalErrors
+            difficulty
           };
 
         case Difficulty.INTERMEDIATE:
           return {
             words: WordsHelper.getIntermediateWords(),
-            difficulty,
-            totalErrors
+            difficulty
           };
 
         default:
           return {
             words: WordsHelper.getChallengingWords(),
-            difficulty,
-            totalErrors
+            difficulty
           };
       }
     }
@@ -44,5 +40,5 @@ export function wordsReducer(
   state: undefined | Words,
   action: Action
 ): Words {
-  return _wordsreducer(state, action);
+  return _wordsReducer(state, action);
 }
