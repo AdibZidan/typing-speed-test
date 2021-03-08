@@ -1,4 +1,5 @@
 @import "../../shared/colors/_colors.scss";
+@import "../../shared/button/_button.scss";
 
 @mixin footer-component {
   footer {
@@ -23,5 +24,11 @@
         color: darken($main-color, 30%);
       }
     }
+
+    button {
+      width: 25%
+    }
   }
+
+  @include button;
 }

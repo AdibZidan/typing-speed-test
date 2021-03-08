@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './components/form/form.component';
 import { InformationComponent } from './components/information/information.component';
 import { TextAreaComponent } from './components/inputs/text-area/text-area.component';
+import { InstructionsComponent } from './components/instructions/instructions.component';
 import { WordsComponent } from './components/words/words.component';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { WordsComponent } from './components/words/words.component';
     FormComponent,
     InformationComponent,
     TextAreaComponent,
+    InstructionsComponent,
     WordsComponent
   ],
   imports: [
@@ -25,6 +27,7 @@ import { WordsComponent } from './components/words/words.component';
     CommonModule,
     FormComponent,
     TextAreaComponent,
+    InstructionsComponent,
     WordsComponent
   ]
 })

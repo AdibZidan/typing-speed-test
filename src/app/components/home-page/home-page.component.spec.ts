@@ -4,6 +4,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { FormComponent } from '@shared/components/form/form.component';
 import { InformationComponent } from '@shared/components/information/information.component';
 import { TextAreaComponent } from '@shared/components/inputs/text-area/text-area.component';
+import { InstructionsComponent } from '@shared/components/instructions/instructions.component';
 import { WordsComponent } from '@shared/components/words/words.component';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
 import { DifficultySelectorComponent } from '../difficulty-selector/difficulty-selector.component';
@@ -21,9 +22,10 @@ describe('HomePageComponent', () => {
         FormComponent,
         InformationComponent,
         TextAreaComponent,
+        InstructionsComponent,
         WordsComponent,
         DifficultySelectorComponent,
-        HomePageComponent
+        HomePageComponent,
       ],
       providers: [provideMockStore()],
       imports: [ReactiveFormsModule]

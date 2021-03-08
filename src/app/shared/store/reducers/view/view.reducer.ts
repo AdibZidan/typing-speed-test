@@ -12,6 +12,9 @@ const initialViewsState: Views = {
   },
   footer: {
     isShown: false
+  },
+  instructions: {
+    isShown: false
   }
 };
 

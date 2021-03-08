@@ -1,0 +1,16 @@
+<ng-container *ngIf="(view$ | async)?.isShown">
+  <section>
+    <p>
+      Your goal is to type as fast as possible!
+      Make sure to also not make any mistakes!
+    </p>
+
+    <p>
+      Are you ready?
+    </p>
+
+    <button (click)="goBack()">
+      Yes!
+    </button>
+  </section>
+</ng-container>

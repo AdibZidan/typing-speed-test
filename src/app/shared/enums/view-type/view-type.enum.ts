@@ -1,5 +1,6 @@
 export enum ViewType {
   DIFFICULTY_SELECTOR = 'difficultySelector',
   FORM = 'form',
-  FOOTER = 'footer'
+  FOOTER = 'footer',
+  INSTRUCTIONS = 'instructions'
 }

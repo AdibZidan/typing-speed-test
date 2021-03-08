@@ -8,34 +8,26 @@ import { selectView } from '@shared/store/selectors/view/view.selector';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  selector: 'app-instructions',
+  templateUrl: './instructions.component.html',
+  styleUrls: ['./instructions.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class InstructionsComponent implements OnInit {
 
   public view$!: Observable<View>;
-
-  public get currentYear(): number {
-    return new Date().getFullYear();
-  }
 
   constructor(
     private store$: Store<AppState>
   ) { }
 
   public ngOnInit(): void {
-    this.view$ = this.store$.select(selectView(ViewType.FOOTER));
+    this.view$ = this.store$.select(selectView(ViewType.INSTRUCTIONS));
   }
 
-  public showInstructions(): void {
-    this.store$.dispatch(showView({ viewType: ViewType.INSTRUCTIONS }));
-    this.hideViews();
-  }
-
-  private hideViews(): void {
-    this.store$.dispatch(hideView({ viewType: ViewType.FORM }));
-    this.store$.dispatch(hideView({ viewType: ViewType.FOOTER }));
+  public goBack(): void {
+    this.store$.dispatch(hideView({ viewType: ViewType.INSTRUCTIONS }));
+    this.store$.dispatch(showView({ viewType: ViewType.FORM }));
+    this.store$.dispatch(showView({ viewType: ViewType.FOOTER }));
   }
 
 }
