@@ -15,6 +15,7 @@ export class InformationComponent implements OnInit {
   public difficulty$!: Observable<Difficulty>;
   public totalErrors$!: Observable<number>;
   public totalWords$!: Observable<number>;
+  public wordsPerMinute$!: Observable<number>;
 
   constructor(
     private store$: Store<AppState>
@@ -24,6 +25,7 @@ export class InformationComponent implements OnInit {
     this.difficulty$ = this.store$.select(selectDifficulty);
     this.totalErrors$ = this.store$.select('totalErrors');
     this.totalWords$ = this.store$.select(selectWordsLength);
+    this.wordsPerMinute$ = this.store$.select('wordsPerMinute');
   }
 
 }

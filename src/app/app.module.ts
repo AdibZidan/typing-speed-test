@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { colorReducer } from './shared/store/reducers/color/color.reducer';
 import { errorReducer } from './shared/store/reducers/error/error.reducer';
 import { viewReducer } from './shared/store/reducers/view/view.reducer';
+import { wordsPerMinuteReducer } from './shared/store/reducers/words-per-minute/words-per-minute.reducer';
 import { wordsReducer } from './shared/store/reducers/words/words.reducer';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { wordsReducer } from './shared/store/reducers/words/words.reducer';
       color: colorReducer,
       totalErrors: errorReducer,
       views: viewReducer,
+      wordsPerMinute: wordsPerMinuteReducer,
       words: wordsReducer
     })
   ],

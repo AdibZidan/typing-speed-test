@@ -6,6 +6,7 @@ import { AppState } from '@shared/interfaces/app-state/app-state.interface';
 import { View } from '@shared/interfaces/view/view.interface';
 import { setTextColor } from '@shared/store/actions/color/color.actions';
 import { incrementErrorCount } from '@shared/store/actions/error/error.actions';
+import { calculateWordsPerMinute } from '@shared/store/actions/words-per-minute/words-per-minute.actions';
 import { selectView } from '@shared/store/selectors/view/view.selector';
 import { selectWords } from '@shared/store/selectors/words/words.selector';
 import { combineLatest, Observable, Subscription } from 'rxjs';
@@ -52,6 +53,11 @@ export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
       this.store$.select(selectWords),
       this.formGroup.valueChanges
     ]).pipe(map(([words, { text }]) => {
+      this.store$.dispatch(calculateWordsPerMinute({
+        length: text.length,
+        words
+      }));
+
       let color: string = '';
 
       color = this.determineTextColor(text, words, color);

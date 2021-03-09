@@ -6,4 +6,5 @@ export interface AppState {
   views: Views;
   color: string;
   totalErrors: number;
+  wordsPerMinute: number;
 }

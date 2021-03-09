@@ -6,6 +6,14 @@
       </strong>
     </span>
 
+    <ng-container *ngIf="wordsPerMinute$ | async as wordsPerMinute">
+      <span>
+        <strong>
+          Words Per Minute: {{ wordsPerMinute }}
+        </strong>
+      </span>
+    </ng-container>
+
     <ng-container *ngIf="totalWords$ | async as totalWords">
       <span>
         <strong>
