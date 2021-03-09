@@ -24,7 +24,7 @@ export class InstructionsComponent implements OnInit {
     this.view$ = this.store$.select(selectView(ViewType.INSTRUCTIONS));
   }
 
-  public goBack(): void {
+  public goBackToFormView(): void {
     this.store$.dispatch(hideView({ viewType: ViewType.INSTRUCTIONS }));
     this.store$.dispatch(showView({ viewType: ViewType.FORM }));
     this.store$.dispatch(showView({ viewType: ViewType.FOOTER }));
