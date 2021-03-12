@@ -1,5 +1,5 @@
-import { Difficulty } from "@shared/enums/difficulty/difficulty.enum";
-import { DifficultyHelper } from "./difficulty.helper";
+import { Difficulty } from '@shared/enums/difficulty/difficulty.enum';
+import { DifficultyHelper } from './difficulty.helper';
 
 describe('DifficultyHelper', () => {
   it('Should have a difficulties property', () => {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { fadeIn } from '@animations';
 import { Store } from '@ngrx/store';
 import { Difficulty } from '@shared/enums/difficulty/difficulty.enum';
 import { ViewType } from '@shared/enums/view-type/view-type.enum';
@@ -13,7 +14,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-difficulty-selector',
   templateUrl: './difficulty-selector.component.html',
-  styleUrls: ['./difficulty-selector.component.scss']
+  styleUrls: ['./difficulty-selector.component.scss'],
+  animations: [fadeIn]
 })
 export class DifficultySelectorComponent implements OnInit {
 

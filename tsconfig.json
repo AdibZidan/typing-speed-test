@@ -21,6 +21,9 @@
       "dom"
     ],
     "paths": {
+      "@animations": [
+        "src/assets/partials/animations/animations"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

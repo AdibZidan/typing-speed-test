@@ -1,5 +1,7 @@
 <ng-container *ngIf="(view$ | async)?.isShown">
-  <form [formGroup]="formGroup">
+  <form
+    @fadeIn
+    [formGroup]="formGroup">
     <app-text-area
       [controlName]="formGroup?.get('text')">
     </app-text-area>

@@ -1,4 +1,4 @@
-import { WordsPerMinuteHelper } from "./words-per-minute.helper";
+import { WordsPerMinuteHelper } from './words-per-minute.helper';
 
 describe('WordsPerMinuteHelper', () => {
 

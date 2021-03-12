@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { fadeIn } from '@animations';
 import { Store } from '@ngrx/store';
 import { Difficulty } from '@shared/enums/difficulty/difficulty.enum';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
@@ -8,7 +9,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-information',
   templateUrl: './information.component.html',
-  styleUrls: ['./information.component.scss']
+  styleUrls: ['./information.component.scss'],
+  animations: [fadeIn]
 })
 export class InformationComponent implements OnInit {
 

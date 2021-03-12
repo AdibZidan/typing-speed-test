@@ -1,5 +1,5 @@
 <ng-container *ngIf="(view$ | async)?.isShown">
-  <section>
+  <section @fadeIn>
     <p>
       <ng-container *ngIf="(words$ | async)?.words as words">
         <ng-container *ngFor="let letter of words.split('')">
