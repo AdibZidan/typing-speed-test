@@ -15,6 +15,11 @@ export const selectDifficulty = createSelector(
   ({ difficulty }): Difficulty => difficulty
 );
 
+export const selectLetter = createSelector(
+  initialWordsState,
+  ({ letter }): string => letter
+);
+
 export const selectWordsLength = createSelector(
   initialWordsState,
   ({ words }): number => {

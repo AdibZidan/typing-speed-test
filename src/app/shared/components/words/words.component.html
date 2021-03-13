@@ -2,9 +2,11 @@
   <section @fadeIn>
     <p>
       <ng-container *ngIf="(words$ | async)?.words as words">
-        <ng-container *ngFor="let letter of words.split('')">
-          <span [class]="color">{{ letter }}</span>
-        </ng-container>
+        <span
+          appHighlight
+          [words]="words"
+          [letter]="letter">
+        </span>
       </ng-container>
     </p>
   </section>

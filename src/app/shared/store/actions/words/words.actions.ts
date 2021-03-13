@@ -5,3 +5,8 @@ export const setDifficulty = createAction(
   'Set Difficulty',
   props<{ difficulty: Difficulty; }>()
 );
+
+export const setLetter = createAction(
+  'Set Letter',
+  props<{ letter: string; }>()
+);

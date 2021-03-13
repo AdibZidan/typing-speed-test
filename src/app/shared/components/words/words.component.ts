@@ -6,6 +6,7 @@ import { AppState } from '@shared/interfaces/app-state/app-state.interface';
 import { View } from '@shared/interfaces/view/view.interface';
 import { Words } from '@shared/interfaces/words/words.interface';
 import { selectView } from '@shared/store/selectors/view/view.selector';
+import { selectLetter } from '@shared/store/selectors/words/words.selector';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -20,7 +21,7 @@ export class WordsComponent implements OnInit, OnDestroy {
 
   public view$!: Observable<View>;
   public words$!: Observable<Words>;
-  public color!: string;
+  public letter!: string;
 
   constructor(
     private store$: Store<AppState>
@@ -29,18 +30,18 @@ export class WordsComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.view$ = this.store$.select(selectView(ViewType.FORM));
     this.words$ = this.store$.select('words');
-    this.selectColor();
+    this.selectLetter();
   }
 
   public ngOnDestroy(): void {
     this._subscription.unsubscribe();
   }
 
-  private selectColor(): void {
+  private selectLetter(): void {
     this._subscription = this.store$
-      .select('color')
-      .subscribe((color: string): string =>
-        this.color = color
+      .select(selectLetter)
+      .subscribe((letter: string): string =>
+        this.letter = letter
       );
   }
 

@@ -9,6 +9,7 @@ import { TextAreaComponent } from './components/inputs/text-area/text-area.compo
 import { InstructionsComponent } from './components/instructions/instructions.component';
 import { WordsComponent } from './components/words/words.component';
 import { AutoFocusDirective } from './directives/auto-focus/auto-focus.directive';
+import { HighlightDirective } from './directives/highlight/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AutoFocusDirective } from './directives/auto-focus/auto-focus.directive
     TextAreaComponent,
     InstructionsComponent,
     WordsComponent,
-    AutoFocusDirective
+    AutoFocusDirective,
+    HighlightDirective
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { AutoFocusDirective } from './directives/auto-focus/auto-focus.directive
     TextAreaComponent,
     InstructionsComponent,
     WordsComponent,
-    AutoFocusDirective
+    AutoFocusDirective,
+    HighlightDirective
   ]
 })
 export class SharedModule { }

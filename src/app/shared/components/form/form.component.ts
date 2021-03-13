@@ -5,9 +5,8 @@ import { Store } from '@ngrx/store';
 import { ViewType } from '@shared/enums/view-type/view-type.enum';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
 import { View } from '@shared/interfaces/view/view.interface';
-import { setTextColor } from '@shared/store/actions/color/color.actions';
-import { incrementErrorCount } from '@shared/store/actions/error/error.actions';
 import { calculateWordsPerMinute } from '@shared/store/actions/words-per-minute/words-per-minute.actions';
+import { setLetter } from '@shared/store/actions/words/words.actions';
 import { selectView } from '@shared/store/selectors/view/view.selector';
 import { selectWords } from '@shared/store/selectors/words/words.selector';
 import { combineLatest, Observable, Subscription } from 'rxjs';
@@ -55,32 +54,14 @@ export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
       this.store$.select(selectWords),
       this.formGroup.valueChanges
     ]).pipe(map(([words, { text }]) => {
+      this.store$.dispatch(setLetter({ letter: text }));
       this.store$.dispatch(calculateWordsPerMinute({
         length: text.length,
         words
       }));
 
-      let color: string = '';
-
-      color = this.determineTextColor(text, words, color);
-
-      if (color === 'red') {
-        this.store$.dispatch(incrementErrorCount());
-      }
-
       return { words, text };
     })).subscribe();
-  }
-
-  private determineTextColor(text: string, words: string, color: string): string {
-    text.split('').map((letter: string, index: number): void => {
-      if (index < words.length) {
-        color = (letter === words[index]) ? 'green' : 'red';
-        this.store$.dispatch(setTextColor({ color }));
-      }
-    });
-
-    return color;
   }
 
 }

@@ -6,16 +6,16 @@
       text-align: center;
       padding: 25px;
       font-size: 2rem;
+    }
+  }
 
-      span {
-        &.red {
-          background-color: red;
-        }
+  :host ::ng-deep {
+    .red {
+      background-color: red;
+    }
 
-        &.green {
-          background-color: green;
-        }
-      }
+    .green {
+      background-color: green;
     }
   }
 }
