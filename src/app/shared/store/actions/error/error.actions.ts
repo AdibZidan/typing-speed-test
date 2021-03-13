@@ -1,3 +1,6 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-export const incrementErrorCount = createAction('Increment Error Count');
+export const updateErrorCount = createAction(
+  'Update Error Count',
+  props<{ count: number; }>()
+);

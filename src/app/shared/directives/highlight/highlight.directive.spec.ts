@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { provideMockStore } from '@ngrx/store/testing';
 import { HighlightComponentMock } from '@shared/mocks/highlight/highlight.component.mock';
 import { HighlightDirective } from './highlight.directive';
 
@@ -16,7 +17,8 @@ describe('HighlightDirective', () => {
       declarations: [
         HighlightComponentMock,
         HighlightDirective
-      ]
+      ],
+      providers: [provideMockStore()]
     }).compileComponents();
   }));
 
