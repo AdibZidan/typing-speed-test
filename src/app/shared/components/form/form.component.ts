@@ -5,12 +5,13 @@ import { Store } from '@ngrx/store';
 import { ViewType } from '@shared/enums/view-type/view-type.enum';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
 import { View } from '@shared/interfaces/view/view.interface';
+import { startTimer, stopTimer } from '@shared/store/actions/timer/timer.actions';
 import { calculateWordsPerMinute } from '@shared/store/actions/words-per-minute/words-per-minute.actions';
 import { setLetter } from '@shared/store/actions/words/words.actions';
 import { selectView } from '@shared/store/selectors/view/view.selector';
 import { selectWords } from '@shared/store/selectors/words/words.selector';
 import { combineLatest, Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form',
@@ -20,7 +21,7 @@ import { map } from 'rxjs/operators';
 })
 export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  private _subscription: Subscription = new Subscription();
+  private _subscriptions: Subscription[] = [];
 
   public view$!: Observable<View>;
   public formGroup!: FormGroup;
@@ -36,11 +37,15 @@ export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public ngOnDestroy(): void {
-    this._subscription.unsubscribe();
+    this._subscriptions
+      .forEach((subscription: Subscription): void =>
+        subscription.unsubscribe()
+      );
   }
 
   public ngAfterViewInit(): void {
     this.handleUserInput();
+    this.startTimerOnceAfterTyping();
   }
 
   private initializeForm(): void {
@@ -50,7 +55,7 @@ export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private handleUserInput(): void {
-    this._subscription = combineLatest([
+    const subscription: Subscription = combineLatest([
       this.store$.select(selectWords),
       this.formGroup.valueChanges
     ]).pipe(map(([words, { text }]) => {
@@ -59,9 +64,37 @@ export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
         length: text.length,
         words
       }));
+      this.stopTimerConditionally(words, text);
 
       return { words, text };
     })).subscribe();
+
+    this._subscriptions.push(subscription);
+  }
+
+  private stopTimerConditionally(words: string, text: string): void {
+    if (this.areExactAndEquals(words, text)) {
+      setTimeout((): void => this.formGroup.controls.text.disable(), 10);
+
+      this.store$.dispatch(stopTimer());
+    }
+  }
+
+  private areExactAndEquals(words: string, text: any): boolean {
+    return (words.length === text.length) && (words === text);
+  }
+
+  private startTimerOnceAfterTyping(): void {
+    const subscription: Subscription = this.formGroup.valueChanges
+      .pipe(
+        take(1),
+        tap((): void =>
+          this.store$.dispatch(startTimer())
+        )
+      )
+      .subscribe();
+
+    this._subscriptions.push(subscription);
   }
 
 }

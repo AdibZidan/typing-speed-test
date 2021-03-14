@@ -10,6 +10,7 @@ import { InstructionsComponent } from './components/instructions/instructions.co
 import { WordsComponent } from './components/words/words.component';
 import { AutoFocusDirective } from './directives/auto-focus/auto-focus.directive';
 import { HighlightDirective } from './directives/highlight/highlight.directive';
+import { PreventCutCopyPasteDirective } from './directives/text/prevent-cut-copy-paste.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HighlightDirective } from './directives/highlight/highlight.directive';
     InstructionsComponent,
     WordsComponent,
     AutoFocusDirective,
-    HighlightDirective
+    HighlightDirective,
+    PreventCutCopyPasteDirective
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { HighlightDirective } from './directives/highlight/highlight.directive';
     InstructionsComponent,
     WordsComponent,
     AutoFocusDirective,
-    HighlightDirective
+    HighlightDirective,
+    PreventCutCopyPasteDirective
   ]
 })
 export class SharedModule { }

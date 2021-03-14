@@ -18,6 +18,7 @@ export class InformationComponent implements OnInit {
   public totalErrors$!: Observable<number>;
   public totalWords$!: Observable<number>;
   public wordsPerMinute$!: Observable<number>;
+  public timer$!: Observable<number>;
 
   constructor(
     private store$: Store<AppState>
@@ -28,6 +29,7 @@ export class InformationComponent implements OnInit {
     this.totalErrors$ = this.store$.select('totalErrors');
     this.totalWords$ = this.store$.select(selectWordsLength);
     this.wordsPerMinute$ = this.store$.select('wordsPerMinute');
+    this.timer$ = this.store$.select('timer');
   }
 
 }

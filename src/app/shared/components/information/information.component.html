@@ -6,6 +6,14 @@
       </strong>
     </span>
 
+    <ng-container *ngIf="timer$ | async as timer">
+      <span>
+        <strong>
+          Time: {{ timer | date:'mm:ss' }}
+        </strong>
+      </span>
+    </ng-container>
+
     <ng-container *ngIf="wordsPerMinute$ | async as wordsPerMinute">
       <span>
         <strong>
