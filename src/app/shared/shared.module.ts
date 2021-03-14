@@ -10,6 +10,7 @@ import { InstructionsComponent } from './components/instructions/instructions.co
 import { WordsComponent } from './components/words/words.component';
 import { AutoFocusDirective } from './directives/auto-focus/auto-focus.directive';
 import { HighlightDirective } from './directives/highlight/highlight.directive';
+import { ScrollIntoViewDirective } from './directives/scroll-into-view/scroll-into-view.directive';
 import { PreventCutCopyPasteDirective } from './directives/text/prevent-cut-copy-paste.directive';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { PreventCutCopyPasteDirective } from './directives/text/prevent-cut-copy
     WordsComponent,
     AutoFocusDirective,
     HighlightDirective,
+    ScrollIntoViewDirective,
     PreventCutCopyPasteDirective
   ],
   imports: [
@@ -37,6 +39,7 @@ import { PreventCutCopyPasteDirective } from './directives/text/prevent-cut-copy
     WordsComponent,
     AutoFocusDirective,
     HighlightDirective,
+    ScrollIntoViewDirective,
     PreventCutCopyPasteDirective
   ]
 })

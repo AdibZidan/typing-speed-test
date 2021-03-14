@@ -1,5 +1,9 @@
 @mixin words-component {
   section {
+    width: 95%;
+    margin: auto;
+    height: 250px;
+    overflow: hidden;
     border: 1px solid #ccc;
 
     p {

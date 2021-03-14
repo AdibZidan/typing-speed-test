@@ -4,6 +4,7 @@
       <ng-container *ngIf="(words$ | async)?.words as words">
         <span
           appHighlight
+          appScrollIntoView
           [words]="words"
           [letter]="letter">
         </span>
