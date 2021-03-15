@@ -10,6 +10,7 @@ import { FormComponent } from './shared/components/form/form.component';
 import { InformationComponent } from './shared/components/information/information.component';
 import { TextAreaComponent } from './shared/components/inputs/text-area/text-area.component';
 import { InstructionsComponent } from './shared/components/instructions/instructions.component';
+import { ModalComponent } from './shared/components/modal/modal.component';
 import { WordsComponent } from './shared/components/words/words.component';
 
 describe('AppComponent', () => {
@@ -29,6 +30,7 @@ describe('AppComponent', () => {
         InformationComponent,
         TextAreaComponent,
         InstructionsComponent,
+        ModalComponent,
         WordsComponent
       ],
       providers: [provideMockStore()],

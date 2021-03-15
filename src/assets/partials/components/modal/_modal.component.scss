@@ -1,0 +1,23 @@
+@import "../../shared/button/_button.scss";
+
+@mixin modal-component {
+  section {
+    text-align: center;
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 50px;
+    }
+
+    div {
+      &.container {
+        @include button;
+      }
+    }
+  }
+}

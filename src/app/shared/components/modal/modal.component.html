@@ -1,0 +1,23 @@
+<ng-container *ngIf="(view$ | async)?.isShown">
+  <section @fadeIn>
+    <h2>
+      Congratulations!
+    </h2>
+
+    <p>
+      Here are you stats:
+    </p>
+
+    <app-information></app-information>
+
+    <div class="container">
+      <p>
+        Would you like to try again?
+      </p>
+
+      <button (click)="returnBackToDifficultySelector()">
+        Yes
+      </button>
+    </div>
+  </section>
+</ng-container>

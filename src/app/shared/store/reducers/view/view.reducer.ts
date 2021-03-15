@@ -15,6 +15,9 @@ const initialViewsState: Views = {
   },
   instructions: {
     isShown: false
+  },
+  modal: {
+    isShown: false
   }
 };
 

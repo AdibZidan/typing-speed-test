@@ -7,6 +7,7 @@ import { FormComponent } from './components/form/form.component';
 import { InformationComponent } from './components/information/information.component';
 import { TextAreaComponent } from './components/inputs/text-area/text-area.component';
 import { InstructionsComponent } from './components/instructions/instructions.component';
+import { ModalComponent } from './components/modal/modal.component';
 import { WordsComponent } from './components/words/words.component';
 import { AutoFocusDirective } from './directives/auto-focus/auto-focus.directive';
 import { HighlightDirective } from './directives/highlight/highlight.directive';
@@ -19,6 +20,7 @@ import { PreventCutCopyPasteDirective } from './directives/text/prevent-cut-copy
     InformationComponent,
     TextAreaComponent,
     InstructionsComponent,
+    ModalComponent,
     WordsComponent,
     AutoFocusDirective,
     HighlightDirective,
@@ -36,6 +38,7 @@ import { PreventCutCopyPasteDirective } from './directives/text/prevent-cut-copy
     FormComponent,
     TextAreaComponent,
     InstructionsComponent,
+    ModalComponent,
     WordsComponent,
     AutoFocusDirective,
     HighlightDirective,
