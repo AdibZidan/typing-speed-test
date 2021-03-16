@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnChanges, Renderer2 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
 import { updateErrorCount } from '@shared/store/actions/error/error.actions';
@@ -14,6 +14,13 @@ export class HighlightDirective implements OnChanges {
   @Input()
   public letter!: string;
 
+  @HostListener('document:keyup', ['$event'])
+  public handleErrorCountOnKeyUp(keyboardEvent: KeyboardEvent): void {
+    this.updateErrorCount(keyboardEvent);
+  }
+
+  public color!: string;
+
   constructor(
     private store$: Store<AppState>,
     private elementRef: ElementRef,
@@ -26,8 +33,16 @@ export class HighlightDirective implements OnChanges {
       'innerHTML',
       this.getHighlightedLetters()
     );
+  }
 
-    this.updateErrorCount();
+  private updateErrorCount(keyboardEvent: KeyboardEvent) {
+    if (keyboardEvent.key === 'Backspace') {
+      this.color = '';
+    }
+
+    if (this.color === 'red') {
+      this.store$.dispatch(updateErrorCount());
+    }
   }
 
   private getHighlightedLetters(): string {
@@ -38,6 +53,7 @@ export class HighlightDirective implements OnChanges {
 
         if (index < this.letter.length) {
           color = this.isTypedLetterExact(letter, index) ? 'green' : 'red';
+          this.color = color;
         }
 
         return `<span class='${color}'>${letter}</span>`;
@@ -46,14 +62,6 @@ export class HighlightDirective implements OnChanges {
 
   private isTypedLetterExact(letter: string, index: number): boolean {
     return letter === this.letter[index];
-  }
-
-  private updateErrorCount(): void {
-    const totalIncorrectUserInput: number = this.elementRef.nativeElement.innerHTML.match(/red/g)?.length;
-
-    if (totalIncorrectUserInput) {
-      this.store$.dispatch(updateErrorCount({ count: totalIncorrectUserInput }));
-    }
   }
 
 }

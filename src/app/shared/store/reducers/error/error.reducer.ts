@@ -7,7 +7,7 @@ const _errorReducer = createReducer(
   initialErrorCount,
   on(
     updateErrorCount,
-    (state: number, { count }): number => count
+    (state: number): number => state + 1
   )
 );
 
