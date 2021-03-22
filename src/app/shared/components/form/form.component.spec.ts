@@ -4,8 +4,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { Difficulty } from '@shared/enums/difficulty/difficulty.enum';
 import { SpecHelper } from '@shared/helpers/spec/spec.helper';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
-import { startTimer, stopTimer } from '@shared/store/actions/timer/timer.actions';
-import { calculateWordsPerMinute } from '@shared/store/actions/words-per-minute/words-per-minute.actions';
+import { stopTimer } from '@shared/store/actions/timer/timer.actions';
 import { setLetter } from '@shared/store/actions/words/words.actions';
 import { InformationComponent } from '../information/information.component';
 import { TextAreaComponent } from '../inputs/text-area/text-area.component';
@@ -81,19 +80,17 @@ describe('FormComponent', () => {
       expect(dispatchSpy).not.toHaveBeenCalled();
     });
 
-    it('Should start the timer and dispatch actions only after typing', () => {
+    it('Should dispatch actions only after typing', () => {
       component.formGroup.setValue({ text: 'A T' });
 
       const args: any[][] = SpecHelper.getArguments(dispatchSpy);
       const actual: any[] = SpecHelper.flatten(args);
 
       expect(dispatchSpy).toHaveBeenCalled();
-      expect(dispatchSpy).toHaveBeenCalledTimes(3);
-      expect(actual.length).toEqual(3);
+      expect(dispatchSpy).toHaveBeenCalledTimes(1);
+      expect(actual.length).toEqual(1);
       expect(actual).toEqual([
-        { letter: 'A T', type: setLetter.type },
-        { length: 3, words: 'A Test', type: calculateWordsPerMinute.type },
-        { type: startTimer.type }
+        { letter: 'A T', type: setLetter.type }
       ]);
     });
 
@@ -104,13 +101,11 @@ describe('FormComponent', () => {
       const actual: any[] = SpecHelper.flatten(args);
 
       expect(dispatchSpy).toHaveBeenCalled();
-      expect(dispatchSpy).toHaveBeenCalledTimes(4);
-      expect(actual.length).toEqual(4);
+      expect(dispatchSpy).toHaveBeenCalledTimes(2);
+      expect(actual.length).toEqual(2);
       expect(actual).toEqual([
         { letter: 'A Test', type: setLetter.type },
-        { length: 6, words: 'A Test', type: calculateWordsPerMinute.type },
-        { type: stopTimer.type },
-        { type: startTimer.type }
+        { type: stopTimer.type }
       ]);
 
       tick(10);

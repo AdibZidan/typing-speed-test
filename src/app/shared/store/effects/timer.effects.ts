@@ -5,8 +5,10 @@ import { ViewType } from '@shared/enums/view-type/view-type.enum';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
 import { setTimerCount, startTimer, stopTimer } from '@shared/store/actions/timer/timer.actions';
 import { hideView, showView } from '@shared/store/actions/view/view.actions';
-import { ObservableInput, timer } from 'rxjs';
-import { switchMap, takeUntil, tap } from 'rxjs/operators';
+import { ObservableInput, of, timer } from 'rxjs';
+import { switchMap, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
+import { setLetter } from '../actions/words/words.actions';
+import { selectTimer } from '../selectors/timer/timer.selector';
 
 @Injectable()
 export class TimerEffects {
@@ -17,6 +19,17 @@ export class TimerEffects {
   ) { }
 
   public startTimer$ = createEffect(() => this.actions$.pipe(
+    ofType(setLetter.type),
+    withLatestFrom(this.store$.select(selectTimer)),
+    switchMap(([type, timer]): ObservableInput<number> => of(timer)),
+    tap((timer: number): void => {
+      if (timer === 0) {
+        this.store$.dispatch(startTimer());
+      }
+    })
+  ), { dispatch: false });
+
+  public incrementTimer$ = createEffect(() => this.actions$.pipe(
     ofType(startTimer.type),
     switchMap((): ObservableInput<number> => timer(0, 1000)
       .pipe(

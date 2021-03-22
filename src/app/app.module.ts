@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SharedModule } from './shared/shared.module';
 import { TimerEffects } from './shared/store/effects/timer.effects';
+import { WordsPerMinuteEffects } from './shared/store/effects/words-per-minute.effects';
 import { colorReducer } from './shared/store/reducers/color/color.reducer';
 import { errorReducer } from './shared/store/reducers/error/error.reducer';
 import { timerReducer } from './shared/store/reducers/timer/timer.reducer';
@@ -35,7 +36,10 @@ import { wordsReducer } from './shared/store/reducers/words/words.reducer';
       wordsPerMinute: wordsPerMinuteReducer,
       words: wordsReducer
     }),
-    EffectsModule.forRoot([TimerEffects])
+    EffectsModule.forRoot([
+      TimerEffects,
+      WordsPerMinuteEffects
+    ])
   ],
   bootstrap: [AppComponent]
 })

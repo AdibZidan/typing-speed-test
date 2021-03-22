@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { updateErrorCount } from '@shared/store/actions/error/error.actions';
+import { resetErrorCount, updateErrorCount } from '@shared/store/actions/error/error.actions';
 
 const initialErrorCount: number = 0;
 
@@ -8,6 +8,10 @@ const _errorReducer = createReducer(
   on(
     updateErrorCount,
     (state: number): number => state + 1
+  ),
+  on(
+    resetErrorCount,
+    (state: number): number => initialErrorCount
   )
 );
 
