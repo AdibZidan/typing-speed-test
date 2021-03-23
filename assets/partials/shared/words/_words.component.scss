@@ -1,0 +1,25 @@
+@mixin words-component {
+  section {
+    width: 95%;
+    margin: auto;
+    height: 250px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+
+    p {
+      text-align: center;
+      padding: 25px;
+      font-size: 2rem;
+    }
+  }
+
+  :host ::ng-deep {
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+  }
+}

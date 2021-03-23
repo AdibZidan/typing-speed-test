@@ -1,0 +1,14 @@
+@mixin text-area {
+  textarea {
+    outline: none;
+    resize: none;
+    overflow: auto;
+    margin: 40px 0;
+    padding: 25px;
+    font-size: 1.4rem;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

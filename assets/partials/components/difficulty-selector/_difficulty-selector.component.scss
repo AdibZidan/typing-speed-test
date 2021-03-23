@@ -1,0 +1,19 @@
+@import "../../shared/button/_button.scss";
+
+@mixin difficulty-selector-component {
+  section {
+    p {
+      margin-bottom: 40px;
+      font-size: 1.6rem;
+    }
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+
+      @include button;
+    }
+  }
+}

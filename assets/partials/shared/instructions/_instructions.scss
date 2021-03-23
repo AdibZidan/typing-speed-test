@@ -1,0 +1,29 @@
+@import "../button/_button.scss";
+@import "../colors/_colors.scss";
+
+@mixin instructions-component {
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lighten($main-background-color, 2%);
+    padding: 12px;
+    height: 250px;
+
+    p,
+    button {
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    button {
+      width: 90px;
+    }
+  }
+
+  @include button;
+}

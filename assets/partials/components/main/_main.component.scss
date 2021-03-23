@@ -1,0 +1,33 @@
+@import "../../shared/colors/_colors.scss";
+@import "../../shared/reset/_reset.scss";
+
+@mixin main-component {
+  body {
+    background-color: $main-background-color;
+    color: $main-color;
+
+    app-root {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+
+      app-home-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1 0 auto;
+
+        app-form {
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      app-footer {
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  @include reset;
+}
