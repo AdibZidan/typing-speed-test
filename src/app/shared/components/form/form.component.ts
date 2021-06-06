@@ -20,7 +20,7 @@ import { map } from 'rxjs/operators';
 })
 export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  private _subscriptions: Subscription[] = [];
+  private _subscription: Subscription = new Subscription();
 
   public view$!: Observable<View>;
   public formGroup!: FormGroup;
@@ -36,10 +36,7 @@ export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public ngOnDestroy(): void {
-    this._subscriptions
-      .forEach((subscription: Subscription): void =>
-        subscription.unsubscribe()
-      );
+    this._subscription.unsubscribe();
   }
 
   public ngAfterViewInit(): void {
@@ -53,7 +50,7 @@ export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private handleUserInput(): void {
-    const subscription: Subscription = combineLatest([
+    this._subscription = combineLatest([
       this.store$.select(selectWords),
       this.formGroup.valueChanges
     ]).pipe(
@@ -64,8 +61,6 @@ export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
         return { words, text };
       })
     ).subscribe();
-
-    this._subscriptions.push(subscription);
   }
 
   private stopTimerConditionally(words: string, text: string): void {
