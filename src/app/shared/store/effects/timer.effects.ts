@@ -3,10 +3,11 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { ViewType } from '@shared/enums/view-type/view-type.enum';
 import { AppState } from '@shared/interfaces/app-state/app-state.interface';
+import { Words } from '@shared/interfaces/words/words.interface';
 import { setTimerCount, startTimer, stopTimer } from '@shared/store/actions/timer/timer.actions';
 import { hideView, showView } from '@shared/store/actions/view/view.actions';
-import { ObservableInput, timer } from 'rxjs';
-import { pluck, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { ObservableInput, of, timer } from 'rxjs';
+import { switchMap, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 import { setLetter } from '../actions/words/words.actions';
 
 @Injectable()
@@ -19,9 +20,12 @@ export class TimerEffects {
 
   public startTimer$ = createEffect(() => this.actions$.pipe(
     ofType(setLetter.type),
-    pluck('letter'),
-    tap((letter: string): void => {
-      if (letter.length === 1) {
+    withLatestFrom(this.store$),
+    switchMap(([type, appState]) => of(appState)),
+    tap(({ timer, words }: AppState): void => {
+      const { letter }: Words = words;
+
+      if (letter.length === 1 && timer === 0) {
         this.store$.dispatch(startTimer());
       }
     })
