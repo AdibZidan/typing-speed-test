@@ -65,7 +65,10 @@ export class FormComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private stopTimerConditionally(words: string, text: string): void {
     if (this.areExactAndEquals(words, text)) {
-      setTimeout((): void => this.formGroup.setValue({ text: '' }), 10);
+      this.formGroup.setValue(
+        { text: '' },
+        { emitEvent: false }
+      );
 
       this.store$.dispatch(stopTimer());
     }

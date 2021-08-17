@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { Difficulty } from '@shared/enums/difficulty/difficulty.enum';
@@ -94,7 +94,7 @@ describe('FormComponent', () => {
       ]);
     });
 
-    it('Should stop the timer and reset the text value once the user finishes typing the whole sentence', fakeAsync(() => {
+    it('Should stop the timer and reset the text value once the user finishes typing the whole sentence', () => {
       component.formGroup.setValue({ text: 'A Test' });
 
       const args: any[][] = SpecHelper.getArguments(dispatchSpy);
@@ -108,10 +108,8 @@ describe('FormComponent', () => {
         { type: stopTimer.type }
       ]);
 
-      tick(10);
-
       expect(component.formGroup.value).toEqual({ text: '' });
-    }));
+    });
   });
 
 });
